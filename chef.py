@@ -1,1 +1,137 @@
-import pyxel
+import random
+
+
+class Chef:
+    """ A first version of the Chef class for the final project. It just
+    contains properties and setters. It may or not have a dish """
+    def __init__(self, x: int, y: int, position:str):
+        """ Init method of the class
+        :param x: the x of the chef
+        :param y: the y of the chef
+        """
+        self.x = x
+        self.y = y
+        # The initial sprite will be always the same, so no parameter is needed
+        # In Pyxel the image is a tuple with the coordinates of the image in
+        # the image bank.
+        # The tuple is (image_bank, starting_x, starting_y, horizontal_size,
+        # vertical_size)
+        # It would be a good idea to make the sprite read-only, we will see how
+        # to do it in next lectures
+        value = random.randint(0, 1)
+        if value == 1:
+            self.has_dish = True
+        else:
+            self.has_dish = False
+
+        if not isinstance (position,str):
+            raise TypeError("The position must be an string")
+        elif position.lower() not in ["upper","lower"]:
+            raise ValueError ("The position has to be either upper or lower")
+        else:
+            self.__position = position
+
+        if position=="upper":
+            self.image = (0,48,16,16,16)
+        elif position == "lower":
+            self.image = (0,48,32,16,16)
+
+    @property
+    def x(self) -> int:
+        return self.__x
+
+    @property
+    def y(self) -> int:
+        return self.__y
+
+    # @property
+    # def image(self) -> tuple:
+    #     return self.__image
+
+    @property
+    def has_dish(self) -> bool:
+        return self.__has_dish
+
+    @x.setter
+    def x(self, x: int):
+        if not isinstance(x, int):
+            raise TypeError("The x position must be an int")
+        elif x < 0:
+            raise ValueError("The x cannot be negative")
+        else:
+            self.__x = x
+
+    @y.setter
+    def y(self, y: int):
+        if not isinstance(y, int):
+            raise TypeError("The y position must be an int")
+        elif y < 0:
+            raise ValueError("The y cannot be negative")
+        else:
+            self.__y = y
+
+    # @image.setter
+    # def image(self, image: tuple):
+    #     if not isinstance(image, tuple):
+    #         raise TypeError("The image must be a tuple with 5 elements")
+    #     elif len(image) != 5:
+    #         raise ValueError("The image must be a tuple with 5 elements")
+    #     else:
+    #         self.__image = image
+
+    @has_dish.setter
+    def has_dish(self, dish: bool):
+        if not isinstance(dish, bool):
+            raise TypeError("The has_dish attribute must be bool")
+        else:
+            self.__has_dish = dish
+
+    def move(self, direction: str, board_x_size: int, board_y_size:int):
+        """
+        This is an example of how to move the chef horizontally. No obstacles
+        in the board are considered.
+        :param direction: a string which can be 'left' or 'right'
+        :param board_x_size: the horizontal size of the board, to check the
+         limits
+        """
+        DIRECTIONS = ("left", "right", "up", "down")
+        # Checking the type and value of the parameters
+        if not isinstance(direction, str):
+            raise TypeError("The direction must be a string")
+        elif not isinstance(board_x_size, int):
+            raise TypeError("The board_x_size must be an integer")
+        elif board_x_size < 1:
+            raise ValueError("The board_x_size must be a positive integer")
+        elif board_y_size < 1:
+            raise ValueError("The board_y_size must be a positive integer")
+        elif direction.lower() not in DIRECTIONS:
+            raise ValueError("The direction must be 'left' or 'right'")
+        # We convert the direction to lower case to avoid problems with upper
+        # case letters
+        direction = direction.lower()
+        # The (0, 0) position of the chef is the top left corner of the
+        # sprite. We can move the chef to the right if the rightmost
+        # x-coordinate of the chef is less than the board size. It will be
+        # the x-coordinate of the chef plus the width of the sprite. The
+        if self.__position == "upper":
+            if direction == "right" and self.x + self.image[3] < board_x_size:
+                self.x += 1
+            # We can move the chef to the left if its x-coordinate is > 0
+            elif direction == "left" and self.x > 0:
+                self.x -= 1
+            elif direction == "up" and self.y > 0:
+                self.y -= 1
+            elif direction == "down" and self.y + self.image[4] < board_y_size//2:
+                self.y += 1
+
+        if self.__position == "lower":
+            if direction == "right" and self.x + self.image[3] < board_x_size:
+                self.x += 1
+            # We can move the chef to the left if its x-coordinate is > 0
+            elif direction == "left" and self.x > 0:
+                self.x -= 1
+            elif direction == "up" and self.y > board_y_size//2:
+                self.y -= 1
+            elif direction == "down" and self.y + self.image[4] < board_y_size:
+                self.y += 1
+        
