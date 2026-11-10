@@ -1,4 +1,4 @@
-<p align="right"><img src="images/uc3m_logo.png" alt="uc3m" width="120"></p>
+<p align="right"><img src="Imagenes%20del%20READ%20ME/uc3m_logo.png" alt="uc3m" width="120"></p>
 
 **Programming 2026 - 2027**
 
@@ -40,7 +40,7 @@ The main objectives of this project are:
 
 ## 3. Game Description
 
-![Overcooked gameplay screenshot](images/cover_overcooked.png)
+![Overcooked gameplay screenshot](Imagenes%20del%20READ%20ME/cover_overcooked.png)
 
 Students will develop a cooking game inspired by Overcooked. Two chefs work together in a traditional Spanish restaurant to prepare and serve the customers' orders before they run out of patience. A counter divides the kitchen into two zones, one for each chef, so they have to work together. Each service is a level with a time limit. The game goes on level after level, with one more order each time, until the team makes 3 failures, and the score keeps growing according to how well the team serves the orders.
 
@@ -55,7 +55,7 @@ This is how an order goes from the board to the customer:
 Meanwhile new orders keep arriving, so the chefs have to share the work and keep several orders going at once.
 
 <p align="center">
-  <img src="images/figure1_kitchen_layout.png" alt="Figure 1: The kitchen layout" width="600">
+  <img src="Imagenes%20del%20READ%20ME/figure1_kitchen_layout.png" alt="Figure 1: The kitchen layout" width="600">
 </p>
 <p align="center"><em><strong>Figure 1:</strong> The kitchen. Every group uses this layout (see Setting and Characters, below).</em></p>
 
