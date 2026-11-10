@@ -95,8 +95,8 @@ class Board:
         pyxel.cls(0)
         # Drawing the chef. Parameters of pyxel.blt are (x, y, sprite_tuple)
         # The * is used to unpack the sprite tuple
-        pyxel.blt(self.chef_lower.x, self.chef_lower.y, *self.chef_lower.image)
-        pyxel.blt(self.chef_upper.x, self.chef_upper.y, *self.chef_upper.image)
+        pyxel.blt(self.chef_lower.x, self.chef_lower.y, *self.chef_lower.image,colkey=0)
+        pyxel.blt(self.chef_upper.x, self.chef_upper.y, *self.chef_upper.image,colkey=0)
         # A text to show the position of the chef, parameters of
         # pyxel.text are (x, y, text, color)
         # pyxel.text(10, 10, f"({self.chef_lower.x}, {self.chef_lower.y})", 7)
