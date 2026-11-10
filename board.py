@@ -15,6 +15,10 @@ class Board:
         # Setting the attributes
         self.width = width
         self.height = height
+        # Adding an attribute to the board which represents the squares of the board. 
+        
+
+
         # The board will contain a Chef in the middle of it, so one of
         # the attributes of the board will be a Chef object. Note that what is
         # at the middle of the board is the top left corner of the chef.
