@@ -1,4 +1,4 @@
-<p align="right"><img src="Imagenes%20del%20READ%20ME/uc3m_logo.png" alt="uc3m" width="120"></p>
+<p align="center"><img src="Imagenes%20del%20READ%20ME/uc3m_logo.png" alt="uc3m" width="480"></p>
 
 **Programming 2026 - 2027**
 
