@@ -32,9 +32,9 @@ class Chef:
             self.__position = position
 
         if position=="upper":
-            self.image = (0,48,16,16,16)
+            self.image = (0,0,0,16,16)
         elif position == "lower":
-            self.image = (0,48,32,16,16)
+            self.image = (0,0,16,16,16)
 
     @property
     def x(self) -> int:

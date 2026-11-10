@@ -18,15 +18,15 @@ class Board:
         # The board will contain a Chef in the middle of it, so one of
         # the attributes of the board will be a Chef object. Note that what is
         # at the middle of the board is the top left corner of the chef.
-        self.chef1 = Chef(self.width // 2, self.height // 3 * 2 ,"lower")
-        self.chef2 = Chef(self.width // 2, self.height // 3 ,"upper")
+        self.chef_lower = Chef(self.width // 2, self.height // 3 * 2 ,"lower")
+        self.chef_upper = Chef(self.width // 2, self.height // 3 ,"upper")
         # In this init we also need to initialize pyxel
         # This instruction is used to initialize pyxel, see API for more
         # parameters
         pyxel.init(self.width, self.height, title="Pyxel game demo",
                    display_scale=4)
         # Loading the pyxres file with the images
-        pyxel.load("assets/example.pyxres")
+        pyxel.load("sprites.pyxres")
         # Running the game, this will call the update and draw methods in every
         # frame, see API for more
         pyxel.run(self.update, self.draw)
@@ -69,22 +69,22 @@ class Board:
             pyxel.quit()
         # To move the chef
         if pyxel.btn(pyxel.KEY_LEFT):
-            self.chef1.move("left", self.width, self.height)
+            self.chef_lower.move("left", self.width, self.height)
         if pyxel.btn(pyxel.KEY_RIGHT):
-            self.chef1.move("right", self.width, self.height)
+            self.chef_lower.move("right", self.width, self.height)
         if pyxel.btn(pyxel.KEY_UP):
-            self.chef1.move("up", self.width, self.height)
+            self.chef_lower.move("up", self.width, self.height)
         if pyxel.btn(pyxel.KEY_DOWN):
-            self.chef1.move("down", self.width, self.height)
+            self.chef_lower.move("down", self.width, self.height)
 
         if pyxel.btn(pyxel.KEY_A):
-            self.chef2.move("left", self.width, self.height)
+            self.chef_upper.move("left", self.width, self.height)
         if pyxel.btn(pyxel.KEY_D):
-            self.chef2.move("right", self.width, self.height)
+            self.chef_upper.move("right", self.width, self.height)
         if pyxel.btn(pyxel.KEY_W):
-            self.chef2.move("up", self.width, self.height)
+            self.chef_upper.move("up", self.width, self.height)
         if pyxel.btn(pyxel.KEY_S):
-            self.chef2.move("down", self.width, self.height)
+            self.chef_upper.move("down", self.width, self.height)
 
     def draw(self):
         """This is the pyxel method that gets executed in every iteration of
@@ -95,22 +95,16 @@ class Board:
         pyxel.cls(0)
         # Drawing the chef. Parameters of pyxel.blt are (x, y, sprite_tuple)
         # The * is used to unpack the sprite tuple
-        pyxel.blt(self.chef1.x, self.chef1.y, *self.chef1.image)
-        pyxel.blt(self.chef2.x, self.chef2.y, *self.chef2.image)
+        pyxel.blt(self.chef_lower.x, self.chef_lower.y, *self.chef_lower.image)
+        pyxel.blt(self.chef_upper.x, self.chef_upper.y, *self.chef_upper.image)
         # A text to show the position of the chef, parameters of
         # pyxel.text are (x, y, text, color)
-        pyxel.text(10, 10, f"({self.chef1.x}, {self.chef1.y})", 7)
-        pyxel.text(10, 20, f"({self.chef2.x}, {self.chef2.y})", 3)
+        # pyxel.text(10, 10, f"({self.chef_lower.x}, {self.chef_lower.y})", 7)
+        # pyxel.text(10, 20, f"({self.chef_upper.x}, {self.chef_upper.y})", 3)
 
-        ingredient_list=("Potato","Tomato","Onion","Chorizo","Egg")
-        j = 10
-        for i in ingredient_list:
-            pyxel.text(self.__width-50,j,i,7)
-            j+=10
-
-        if pyxel.btn(pyxel.MOUSE_BUTTON_LEFT):
-            pyxel.text(self.chef1.x,self.chef1.y-8, "ACTION", 7)
-        if pyxel.btn(pyxel.MOUSE_BUTTON_RIGHT):
-            pyxel.text(self.chef2.x,self.chef2.y-8, "ACTION", 3)
+        if pyxel.btn(pyxel.KEY_RSHIFT):
+            pyxel.text(self.chef_lower.x,self.chef_lower.y-8, "ACTION", 7)
+        if pyxel.btn(pyxel.KEY_LSHIFT):
+            pyxel.text(self.chef_upper.x,self.chef_upper.y-8, "ACTION", 3)
 
         
