@@ -120,9 +120,9 @@ class Chef:
             # We can move the chef to the left if its x-coordinate is > 0
             elif direction == "left" and self.x > 0:
                 self.x -= 1
-            elif direction == "up" and self.y > 64:
+            elif direction == "up" and self.y > 48:
                 self.y -= 1
-            elif direction == "down" and self.y + self.image[4] < board_y_size//2 + 16:
+            elif direction == "down" and self.y + self.image[4] < board_y_size//2 + 8:
                 self.y += 1
 
         if self.__position == "lower":
@@ -131,7 +131,7 @@ class Chef:
             # We can move the chef to the left if its x-coordinate is > 0
             elif direction == "left" and self.x > 0:
                 self.x -= 1
-            elif direction == "up" and self.y > board_y_size//2 + 32:
+            elif direction == "up" and self.y > board_y_size//2 + 24:
                 self.y -= 1
             elif direction == "down" and self.y + self.image[4] < board_y_size - 16:
                 self.y += 1

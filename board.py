@@ -131,6 +131,8 @@ class Board:
         # This is how much vertical space the service board takes up
         SERVICE_BOARD_HEIGHT = 32
 
+        pyxel.blt(0,0,*(1,0,16,192,176))
+
         # We draw all the squares with a double loop.
         for r in range(len(self.__squares)):
             for s in range(len(self.__squares[r])):
