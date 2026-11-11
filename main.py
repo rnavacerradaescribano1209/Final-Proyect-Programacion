@@ -10,4 +10,4 @@ the init will initialize the game and will run the game.
 
 from board import Board
 # Creating the board object will also initialize pyxel
-board = Board(192, 192)
+board = Board(192, 176)
