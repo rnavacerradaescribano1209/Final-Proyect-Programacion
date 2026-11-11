@@ -7,7 +7,7 @@ class Square:
     HEIGHT = 16
     # Its image must be read-only.
     # Assigning a read-only image for each type of square using a dictionary: (The tuple means (image bank, u, v, width,height))
-    IMAGES = {'service_board': (0, 0, 192, 192, 32), 'floor': (0, 0, 32, 16, 16), 'worktop': (0, 16, 32, 16, 16), 
+    IMAGES = {'service_board': (1, 0, 0, 192, 32), 'floor': (0, 0, 32, 16, 16), 'worktop': (0, 16, 32, 16, 16), 
         'hand_over_wt': (0, 48, 32, 16, 16), 'wall': (0, 32, 32, 16, 16), 'tomato_box': (0, 0, 48, 16, 16),
         'chorizo_box': (0, 48, 48, 16, 16), 'egg_box': (0, 0, 64, 16, 16), 'onion_box': (0, 32, 48, 16, 16), 
         'potato_box': (0, 16, 48, 16, 16),'blender': (0, 32, 176, 16, 16), 'server': (0, 32, 160, 16, 16), 
