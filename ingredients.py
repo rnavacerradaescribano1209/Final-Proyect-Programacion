@@ -52,8 +52,8 @@ class Ingredient:
         '''This makes sure chopped is a boolean'''
         if not isinstance(value,bool):
             raise TypeError("Chopped must be a bool")
-        elif value and self.name not in self.CHOPPED_INGREDIENT_LIST:
-            raise ValueError(f"This ingredient cannot be chopped. Only these {list(self.CHOPPED_INGREDIENT_LIST)}")
+        elif value and not self.can_be_chopped():
+            raise ValueError(f"{self.name} cannot be chopped. Only these {list(self.CHOPPED_INGREDIENT_LIST)}")
         else:
             self.__chopped = value
 
@@ -65,3 +65,8 @@ class Ingredient:
 
         bank, u, v, width, height = self.image
         pyxel.blt(x,y,bank,u,v,width,height,0) 
+
+    # Adding an auxiliary method to check whether an ingredient can be chopped
+    def can_be_chopped(self)-> bool:
+        '''This auxiliary method will return true or false depending on whether the ingredient can be chopped'''
+        return self.name in self.CHOPPED_INGREDIENT_LIST
