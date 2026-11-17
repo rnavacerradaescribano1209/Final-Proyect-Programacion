@@ -5,6 +5,8 @@ from chef import Chef
 from ingredients import Ingredient
 from square import Square
 
+import json
+
 
 class Board:
     """This class contains a simple board"""
@@ -25,11 +27,15 @@ class Board:
             'worktop','pan','return_platform','plates','worktop','worktop']
                 ]
 
-    def __init__(self, width: int, height: int):
+    def __init__(self, width: int, height: int, file_name:str):
         """ Method that creates the board.
         :param width: The width of the board
         :param height: The height of the board
         """
+
+        with open (file_name, "r") as file:
+            data = json.load(file)
+
         # Setting the attributes
         self.width = width
         self.height = height
