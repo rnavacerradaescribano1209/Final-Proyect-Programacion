@@ -26,6 +26,8 @@ class Square:
         else:
             self.__value = value.lower()
 
+        self.is_active = False
+
     @property
     def value(self) -> str:
         '''This method will return the value of value.
@@ -62,3 +64,5 @@ class Square:
         # Unpacking the tuple
         bank, u, v, width, height = self.IMAGES[self.value]
         pyxel.blt(x, y, bank, u, v, width, height)
+
+    

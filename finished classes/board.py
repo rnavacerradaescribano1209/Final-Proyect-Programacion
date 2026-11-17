@@ -148,6 +148,8 @@ class Board:
         # pyxel.text(10, 20, f"({self.chef_upper.x}, {self.chef_upper.y})", 3)
 
         if pyxel.btn(pyxel.KEY_RSHIFT):
+            for i in self.__squares:
+                if self.chef_lower.x in i.
             pyxel.text(self.chef_lower.x,self.chef_lower.y-8, "ACTION", 7)
         if pyxel.btn(pyxel.KEY_LSHIFT):
             pyxel.text(self.chef_upper.x,self.chef_upper.y-8, "ACTION", 3)
