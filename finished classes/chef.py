@@ -144,3 +144,13 @@ class Chef:
                 self.y += 1
                 self.image = (0,48,16,16,16)
         
+        def act(self):
+            '''This method changes the state of the acting attribute'''
+            self.acting = not self.acting
+
+        # def __str__(self)-> str:
+        #     if self.has_dish:
+        #         holding = 'holding'
+        #     else:
+        #         holding = 'not holding'
+            
