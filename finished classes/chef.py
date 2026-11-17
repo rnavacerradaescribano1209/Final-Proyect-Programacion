@@ -1,5 +1,5 @@
 import random
-
+import json
 
 class Chef:
     """ A first version of the Chef class for the final project. It just
@@ -9,6 +9,9 @@ class Chef:
         :param x: the x of the chef
         :param y: the y of the chef
         """
+        
+
+
         self.x = x
         self.y = y
         # The initial sprite will be always the same, so no parameter is needed
