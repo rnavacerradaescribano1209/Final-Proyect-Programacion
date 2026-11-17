@@ -8,7 +8,7 @@ class Dispenser:
     '''This is the class that corresponds to the ingredient boxes and dish pile.'''
     BOARD_WIDTH = 192
     BOARD_HEIGHT = 176
-    CONTS = ['dish','chorizo','egg','onion','tomato','potato']
+    CONTS = ['chorizo','egg','onion','tomato','potato']
 
     def __init__(self, x:int, y:int, content:str):
         '''This is the init method of the Dispenser class. 
