@@ -5,7 +5,7 @@ from chef import Chef
 from ingredients import Ingredient
 from square import Square
 
-# import json
+import json
 
 
 class Board:
@@ -27,14 +27,14 @@ class Board:
             'worktop','pan','return_platform','plates','worktop','worktop']
                 ]
 
-    def __init__(self, width: int, height: int ): #file_name:str
+    def __init__(self, width: int, height: int, file_name:str ):
         """ Method that creates the board.
         :param width: The width of the board
         :param height: The height of the board
         """
 
-        # with open (file_name, "r") as file:
-        #     data = json.load(file)
+        with open (file_name, "r") as file:
+            self.data = json.load(file)
 
         # Setting the attributes
         self.width = width
@@ -135,14 +135,13 @@ class Board:
         self.__service_board.draw(0,0)
 
         # This is how much vertical space the service board takes up
-        SERVICE_BOARD_HEIGHT = 32
 
         pyxel.blt(0,0,*(1,0,0,192,176))
 
         # We draw all the squares with a double loop.
         for r in range(len(self.__squares)):
             for s in range(len(self.__squares[r])):
-                self.__squares[r][s].draw(s * Square.WIDTH, SERVICE_BOARD_HEIGHT + r*Square.HEIGHT)
+                self.__squares[r][s].draw(s * Square.WIDTH, self.data.get("service_board_height") + r*Square.HEIGHT)
 
         # Drawing the chef. Parameters of pyxel.blt are (x, y, sprite_tuple)
         # The * is used to unpack the sprite tuple
