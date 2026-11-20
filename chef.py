@@ -127,7 +127,7 @@ class Chef:
                 self.image = (0,16,0,16,16)
             elif direction == "up" and self.y > 48:
                 self.y -= 1
-                self.image = (0,64,0,16,16)
+                self.image = (0,32,0,16,16)
             elif direction == "down" and self.y + self.image[4] < board_y_size//2 + 8:
                 self.y += 1
                 self.image = (0,48,0,16,16)
@@ -142,7 +142,7 @@ class Chef:
                 self.image = (0,16,16,16,16)
             elif direction == "up" and self.y > board_y_size//2 + 24:
                 self.y -= 1
-                self.image = (0,64,16,16,16)
+                self.image = (0,32,16,16,16)
             elif direction == "down" and self.y + self.image[4] < board_y_size - 16:
                 self.y += 1
                 self.image = (0,48,16,16,16)
