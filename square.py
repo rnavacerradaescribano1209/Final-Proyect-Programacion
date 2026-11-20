@@ -1,28 +1,22 @@
 import pyxel
+import json
 
 # Creating a class called Square, which will represent a square of the board. 
 class Square:
-    '''This class contains the squares of the board. The width and height of the squares are constant.'''
-    WIDTH = 16
-    HEIGHT = 16
-    # Its image must be read-only.
-    # Assigning a read-only image for each type of square using a dictionary: (The tuple means (image bank, u, v, width,height))
-    IMAGES = {'service_board': (1, 0, 0, 192, 32), 'floor': (0, 0, 32, 16, 16), 'worktop': (0, 16, 32, 16, 16), 
-        'hand_over_wt': (0, 48, 32, 16, 16), 'wall': (0, 32, 32, 16, 16), 'tomato_box': (0, 0, 48, 16, 16),
-        'chorizo_box': (0, 48, 48, 16, 16), 'egg_box': (0, 0, 64, 16, 16), 'onion_box': (0, 32, 48, 16, 16), 
-        'potato_box': (0, 16, 48, 16, 16),'blender': (0, 32, 176, 16, 16), 'server': (0, 32, 160, 16, 16), 
-        'bin': (0, 48, 160, 16, 16), 'cutting_board': (0, 16, 176, 16, 16), 'pan': (0, 48, 176, 16, 16),
-        'plates': (0, 0, 176, 16, 16), 'return_platform': (0, 48, 112, 16, 16), 'sink': (0,16,64,16,16) }
+    '''This class contains the squares of the board.'''
 
-    def __init__(self, value: str):
+    def __init__(self, value: str,file_name:str):
         ''' The init method of the class.
         :param value: the squares can either be part of the service board, floor, worktop, hand-over worktops,
         wall, ingredients boxes, blender, server, bin, cutting board, pan, plates, or return platform'''
 
+        with open (file_name, "r") as file:
+            self.data = json.load(file)
+
         if not isinstance(value, str):
             raise TypeError("The value of square must be a string.")
-        elif value.lower() not in self.IMAGES:
-            raise ValueError("The value must be " + str(tuple(self.IMAGES)))
+        elif value.lower() not in self.data.get("images"):
+            raise ValueError("The value must be " + str(tuple(self.data.get("images"))))
         else:
             self.__value = value.lower()
 
@@ -62,7 +56,7 @@ class Square:
         :param x: the x coord where the square is drawn
         :param y: the y coord where the square is drawn'''
         # Unpacking the tuple
-        bank, u, v, width, height = self.IMAGES[self.value]
+        bank, u, v, width, height = self.data.get("images")[self.value]
         pyxel.blt(x, y, bank, u, v, width, height)
 
     

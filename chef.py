@@ -4,13 +4,14 @@ import json
 class Chef:
     """ A first version of the Chef class for the final project. It just
     contains properties and setters. It may or not have a dish """
-    def __init__(self, x: int, y: int, position:str):
+    def __init__(self, x: int, y: int, position:str,file_name:str):
         """ Init method of the class
         :param x: the x of the chef
         :param y: the y of the chef
         """
         
-
+        with open (file_name, "r") as file:
+            self.data = json.load(file)
 
         self.x = x
         self.y = y
@@ -98,7 +99,7 @@ class Chef:
         :param board_x_size: the horizontal size of the board, to check the
          limits
         """
-        DIRECTIONS = ("left", "right", "up", "down")
+
         # Checking the type and value of the parameters
         if not isinstance(direction, str):
             raise TypeError("The direction must be a string")
@@ -108,7 +109,7 @@ class Chef:
             raise ValueError("The board_x_size must be a positive integer")
         elif board_y_size < 1:
             raise ValueError("The board_y_size must be a positive integer")
-        elif direction.lower() not in DIRECTIONS:
+        elif direction.lower() not in self.data.get("directions"):
             raise ValueError("The direction must be 'left' or 'right'")
         # We convert the direction to lower case to avoid problems with upper
         # case letters
