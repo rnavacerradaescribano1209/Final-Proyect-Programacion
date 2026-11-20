@@ -2,22 +2,23 @@ import pyxel
 
 class Ingredient:
     '''This is the class of the ingredients of the game'''
-    INGREDIENT_LIST = {"potato":(0,16,48,16,16),
-                        "tomato":(0,0,48,16,16),
-                        "onion":(0,32,48,16,16),
-                        "chorizo":(0,48,48,16,16),
-                        "egg":(0,0,64,16,16)}
-    CHOPPED_INGREDIENT_LIST = {"potato":(0,48,64,16,16),
-                        "tomato":(0,32,64,16,16),
-                        "onion":(0,0,80,16,16),
-                        "chorizo":(0,16,80,16,16)}
+    # INGREDIENT_LIST = {"potato":(0,16,48,16,16),
+    #                     "tomato":(0,0,48,16,16),
+    #                     "onion":(0,32,48,16,16),
+    #                     "chorizo":(0,48,48,16,16),
+    #                     "egg":(0,0,64,16,16)}
+    # CHOPPED_INGREDIENT_LIST = {"potato":(0,48,64,16,16),
+    #                     "tomato":(0,32,64,16,16),
+    #                     "onion":(0,0,80,16,16),
+    #                     "chorizo":(0,16,80,16,16)}
     
-    def __init__ (self, name:str):
+    def __init__ (self, name:str, dictionary:dict):
         '''This is the init method of the class Ingredient.
         :param name: the name of the ingredient'''
         self.name = name
         # A new ingredient is always whole
         self.chopped = False
+        self.dict = dictionary
 
     @property
     def chopped(self) -> bool:
@@ -33,17 +34,17 @@ class Ingredient:
     def image(self) -> tuple:
         '''This returns the image tuple of the ingredient'''
         if not self.chopped:
-            return self.INGREDIENT_LIST[self.name]
+            return self.dictionary["ingredient_list"][self.name]
         else:
-            return self.CHOPPED_INGREDIENT_LIST[self.name]
+            return self.dictionary["choped_ingredient_list"][self.name]
 
     @name.setter
     def name (self, name):
         '''This controls the name'''
         if not isinstance (name,str):
             raise TypeError("Ingredient names must be strings.")
-        elif name.lower() not in self.INGREDIENT_LIST.keys():
-            raise ValueError(f"{name} is not a valid ingredient. It must be one of these: {list(self.INGREDIENT_LIST)}")
+        elif name.lower() not in self.dictionary["ingredient_list"].keys():
+            raise ValueError(f"{name} is not a valid ingredient. It must be one of these: {list(self.dictionary["ingredient_list"])}")
         else:
             self.__name = name.lower()
 
@@ -53,7 +54,7 @@ class Ingredient:
         if not isinstance(value,bool):
             raise TypeError("Chopped must be a bool")
         elif value and not self.can_be_chopped():
-            raise ValueError(f"{self.name} cannot be chopped. Only these {list(self.CHOPPED_INGREDIENT_LIST)}")
+            raise ValueError(f"{self.name} cannot be chopped. Only these {list(self.dictionary["choped_ingredient_list"])}")
         else:
             self.__chopped = value
 
@@ -69,4 +70,4 @@ class Ingredient:
     # Adding an auxiliary method to check whether an ingredient can be chopped
     def can_be_chopped(self)-> bool:
         '''This auxiliary method will return true or false depending on whether the ingredient can be chopped'''
-        return self.name in self.CHOPPED_INGREDIENT_LIST
+        return self.name in self.dictionary["choped_ingredient_list"]

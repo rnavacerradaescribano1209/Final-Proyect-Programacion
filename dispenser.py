@@ -67,4 +67,4 @@ class Dispenser:
    
     def extract(self) -> Ingredient:
         '''This method dispenses the corresponding ingredient-class object'''
-        return Ingredient(self.content)
+        return Ingredient(self.content,"ingredients")
