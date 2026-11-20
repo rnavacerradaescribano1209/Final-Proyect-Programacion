@@ -39,7 +39,7 @@ class Board:
         # Setting the attributes
         self.width = width
         self.height = height
-        self.__service_board = Square('service_board',"Final-Proyect-Programacion\config.json")
+        self.__service_board = Square('service_board',self.data.get("squares"))
 
         # Building a Square object for every name in the layout.
         # Creating an empty list to store them.
@@ -48,7 +48,7 @@ class Board:
         for line in self.LAYOUT:
             row = []
             for element in line:
-                row.append(Square(element,"Final-Proyect-Programacion\config.json"))
+                row.append(Square(element,self.data.get("squares")))
             self.__squares.append(row)
 
 
