@@ -7,7 +7,12 @@ This is the main file of the project. It will create a Board object, that in
 the init will initialize the game and will run the game.
 """
 
-
+from pathlib import Path
 from board import Board
+
+
+# Loading the configuration file from the assets folder. 
+# The path is relative to the main.py file
+config_path = Path(__file__).parent / "config.json"
 # Creating the board object will also initialize pyxel
-board = Board(192, 176,"Final-Proyect-Programacion\config.json")
+board = Board(192,176,str(config_path))
