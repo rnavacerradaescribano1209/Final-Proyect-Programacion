@@ -9,17 +9,18 @@ class Square:
         ''' The init method of the class.
         :param value: the squares can either be part of the service board, floor, worktop, hand-over worktops,
         wall, ingredients boxes, blender, server, bin, cutting board, pan, plates, or return platform'''
+        
+        self.dict = dictionary
 
         if not isinstance(value, str):
             raise TypeError("The value of square must be a string.")
-        elif value.lower() not in self.data.get("images"):
-            raise ValueError("The value must be " + str(tuple(self.data.get("images"))))
+        elif value.lower() not in self.dict["images"]:
+            raise ValueError("The value must be " + str(tuple(self.dict["images"])))
         else:
             self.__value = value.lower()
 
         self.is_active = False
 
-        self.dict = dictionary
     @property
     def value(self) -> str:
         '''This method will return the value of value.
