@@ -5,13 +5,10 @@ import json
 class Square:
     '''This class contains the squares of the board.'''
 
-    def __init__(self, value: str,file_name:str):
+    def __init__(self, value: str,dictionary:dict):
         ''' The init method of the class.
         :param value: the squares can either be part of the service board, floor, worktop, hand-over worktops,
         wall, ingredients boxes, blender, server, bin, cutting board, pan, plates, or return platform'''
-
-        with open (file_name, "r") as file:
-            self.data = json.load(file)
 
         if not isinstance(value, str):
             raise TypeError("The value of square must be a string.")
@@ -22,11 +19,21 @@ class Square:
 
         self.is_active = False
 
+        self.dict = dictionary
     @property
     def value(self) -> str:
         '''This method will return the value of value.
         :return: the type of square'''
         return self.__value
+
+    @property
+    def dictionary(self) -> dict:
+        return self.__dict
+
+    @dictionary.setter
+    def dictionary(self,dictionary:dict):
+        if not isinstance(dictionary,dict):
+            raise TypeError("")
 
     def __str__(self) -> str:
         '''We invoke this method in order to make sure we are working with the right square, although it's not essential here.
