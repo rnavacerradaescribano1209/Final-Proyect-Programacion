@@ -4,17 +4,15 @@ import json
 class Chef:
     """ A first version of the Chef class for the final project. It just
     contains properties and setters. It may or not have a dish """
-    def __init__(self, x: int, y: int, position:str,file_name:str):
+    def __init__(self, x: int, y: int, position:str,dictionary:dict):
         """ Init method of the class
         :param x: the x of the chef
         :param y: the y of the chef
         """
-        
-        with open (file_name, "r") as file:
-            self.data = json.load(file)
 
         self.x = x
         self.y = y
+        self.dict = dictionary
         # The initial sprite will be always the same, so no parameter is needed
         # In Pyxel the image is a tuple with the coordinates of the image in
         # the image bank.
@@ -49,6 +47,10 @@ class Chef:
     def y(self) -> int:
         return self.__y
 
+    @property
+    def dictionary(self) -> int:
+        return self.__dict
+
     # @property
     # def image(self) -> tuple:
     #     return self.__image
@@ -74,6 +76,13 @@ class Chef:
             raise ValueError("The y cannot be negative")
         else:
             self.__y = y
+
+    @dictionary.setter
+    def dictionary(self,dictionary:dict):
+        if not isinstance(dictionary,dict):
+            raise TypeError("Chef must recieve a dictionary")
+        else:
+            self.__dict = dictionary
 
     # @image.setter
     # def image(self, image: tuple):
@@ -109,7 +118,7 @@ class Chef:
             raise ValueError("The board_x_size must be a positive integer")
         elif board_y_size < 1:
             raise ValueError("The board_y_size must be a positive integer")
-        elif direction.lower() not in self.data.get("directions"):
+        elif direction.lower() not in self.dict["directions"]:
             raise ValueError("The direction must be 'left' or 'right'")
         # We convert the direction to lower case to avoid problems with upper
         # case letters

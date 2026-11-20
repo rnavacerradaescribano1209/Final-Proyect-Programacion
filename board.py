@@ -55,8 +55,8 @@ class Board:
         # The board will contain a Chef in the middle of it, so one of
         # the attributes of the board will be a Chef object. Note that what is
         # at the middle of the board is the top left corner of the chef.
-        self.chef_lower = Chef(self.width // 2, self.height // 3 * 2 ,"lower","Final-Proyect-Programacion\config.json")
-        self.chef_upper = Chef(self.width // 2, self.height // 3 ,"upper","Final-Proyect-Programacion\config.json")
+        self.chef_lower = Chef(self.width // 2, self.height // 3 * 2 ,"lower",self.data.get("chef"))
+        self.chef_upper = Chef(self.width // 2, self.height // 3 ,"upper",self.data.get("chef"))
         # In this init we also need to initialize pyxel
         # This instruction is used to initialize pyxel, see API for more
         # parameters
