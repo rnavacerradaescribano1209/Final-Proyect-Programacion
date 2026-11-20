@@ -33,7 +33,9 @@ class Square:
     @dictionary.setter
     def dictionary(self,dictionary:dict):
         if not isinstance(dictionary,dict):
-            raise TypeError("")
+            raise TypeError("Square must recieve a dictionary")
+        else:
+            self.__dict = dictionary
 
     def __str__(self) -> str:
         '''We invoke this method in order to make sure we are working with the right square, although it's not essential here.
@@ -63,7 +65,7 @@ class Square:
         :param x: the x coord where the square is drawn
         :param y: the y coord where the square is drawn'''
         # Unpacking the tuple
-        bank, u, v, width, height = self.data.get("images")[self.value]
+        bank, u, v, width, height = self.dict["images"][self.value]
         pyxel.blt(x, y, bank, u, v, width, height)
 
     
