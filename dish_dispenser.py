@@ -5,9 +5,6 @@ class DishDispenser(Dispenser):
     '''This is the subclass which stores the dish dispenser. It is a subclass of the mother class
     Dispenser.'''
 
-    # We will have 5 dishes available.
-    MAX_DISHES = 5
-
     def __init__(self, x:int, y:int):
         '''This is the init method of the dish dispenser subclass.'''
         super().__init__(x,y)
