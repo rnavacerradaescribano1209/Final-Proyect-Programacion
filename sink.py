@@ -41,4 +41,5 @@ class Sink:
     def clean(self) -> Dish:
         '''This is the method which will be invoked when the chef uses the sink
         in order to clean a dirty dish'''
-
+        if Dish(dirty = True):
+            return Dish(dirty = False)

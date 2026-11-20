@@ -1,12 +1,13 @@
 # Creating the dish class
 class Dish:
     '''This is the class which contains the dishes'''
-    def __init__(self, x:int, y:int, dirty: bool):
+    def __init__(self, x:int, y:int):
         '''This is the init method of the Dish class.
         :param x: the x coord of the dish
         :param y: the y coord of the dish'''
         self.x = x
         self.y = y
+        self.image = (0,32,80,16,16)
         self.containing = False
         self.dirty = False
 
@@ -19,6 +20,11 @@ class Dish:
     def y(self) -> int:
         '''This returns the y coordinate of the dispenser'''
         return self.__y
+
+    @property
+    def image(self)-> tuple:
+        if self.dirty:
+            self.image = (0,48,112,16,16)
 
     @property
     def containing(self) -> bool:
