@@ -1,6 +1,22 @@
 {
-    "Widht": 192,
-    "Height": 176,
-    "max_dishes": 5,
-    "Wabalaba dub dub": "Wabalaba dub dub"
+    "board_width" : 192,
+    "board_height" : 176,
+    "service_board_height": 32,
+    "directions": ["left","right","up","down"],
+    "width":16,
+    "height":16,
+    "ingredients_list":{
+        "potato":[0,16,48,16,16],
+        "tomato":[0,0,48,16,16],
+        "onion":[0,32,48,16,16],
+        "chorizo":[0,48,48,16,16],
+        "egg":[0,0,64,16,16]
+    },
+    "choped_ingredient_list": {
+        "potato":[0,48,64,16,16],
+        "tomato":[0,32,64,16,16],
+        "onion":[0,0,80,16,16],
+        "chorizo":[0,16,80,16,16]
+    },
+    "conts":["chorizo","egg","onion","tomato","potato"]
 }
