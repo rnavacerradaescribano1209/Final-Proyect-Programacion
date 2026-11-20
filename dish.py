@@ -13,6 +13,16 @@ class Dish:
     def containing(self) -> bool:
         return self.__containing 
 
-    
+    def fill(self) -> Dish:
+        '''This method fills the plate with the corresponding ingredient if
+        the dish is not already full of something'''
+        if not self.containing:
+            self.containing = True
+            return Dish(self.containing)
 
-
+    def empty(self)-> Dish:
+        '''This method turns a full dish into an empty one, but only if the dish
+        was already containing something'''
+        if self.containing:
+            self.containing = False
+            return Dish(self.containing)
