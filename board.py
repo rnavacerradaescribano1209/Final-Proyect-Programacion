@@ -39,7 +39,7 @@ class Board:
         # Setting the attributes
         self.width = width
         self.height = height
-        self.__service_board = Square('service_board')
+        self.__service_board = Square('service_board',"Final-Proyect-Programacion\config.json")
 
         # Building a Square object for every name in the layout.
         # Creating an empty list to store them.
@@ -48,15 +48,15 @@ class Board:
         for line in self.LAYOUT:
             row = []
             for element in line:
-                row.append(Square(element))
+                row.append(Square(element,"Final-Proyect-Programacion\config.json"))
             self.__squares.append(row)
 
 
         # The board will contain a Chef in the middle of it, so one of
         # the attributes of the board will be a Chef object. Note that what is
         # at the middle of the board is the top left corner of the chef.
-        self.chef_lower = Chef(self.width // 2, self.height // 3 * 2 ,"lower")
-        self.chef_upper = Chef(self.width // 2, self.height // 3 ,"upper")
+        self.chef_lower = Chef(self.width // 2, self.height // 3 * 2 ,"lower","Final-Proyect-Programacion\config.json")
+        self.chef_upper = Chef(self.width // 2, self.height // 3 ,"upper","Final-Proyect-Programacion\config.json")
         # In this init we also need to initialize pyxel
         # This instruction is used to initialize pyxel, see API for more
         # parameters
@@ -141,7 +141,7 @@ class Board:
         # We draw all the squares with a double loop.
         for r in range(len(self.__squares)):
             for s in range(len(self.__squares[r])):
-                self.__squares[r][s].draw(s * Square.WIDTH, self.data.get("service_board_height") + r*Square.HEIGHT)
+                self.__squares[r][s].draw(s * self.data.get("width"), self.data.get("service_board_height") + r*self.data.get("height"))
 
         # Drawing the chef. Parameters of pyxel.blt are (x, y, sprite_tuple)
         # The * is used to unpack the sprite tuple
