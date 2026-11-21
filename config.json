@@ -6,6 +6,7 @@
     "height":16,
     "clean_dish_image": [0,32,80,16,16],
     "dirty_dish_image": [0,48,112,16,16],
+    "transparent_color": 0,
     "ingredients":
     {"ingredients_list":{
         "potato":[0,16,48,16,16],
@@ -14,7 +15,7 @@
         "chorizo":[0,48,48,16,16],
         "egg":[0,0,64,16,16]
     },
-    "choped_ingredient_list": {
+    "chopped_ingredient_list": {
         "potato":[0,48,64,16,16],
         "tomato":[0,32,64,16,16],
         "onion":[0,0,80,16,16],
