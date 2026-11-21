@@ -10,7 +10,7 @@ class Square:
         :param value: the squares can either be part of the service board, floor, worktop, hand-over worktops,
         wall, ingredients boxes, blender, server, bin, cutting board, pan, plates, or return platform'''
         
-        self.dict = dictionary
+        self.__dict = dictionary
 
         if not isinstance(value, str):
             raise TypeError("The value of square must be a string.")
@@ -27,16 +27,16 @@ class Square:
         :return: the type of square'''
         return self.__value
 
-    @property
-    def dictionary(self) -> dict:
-        return self.__dict
+    # @property
+    # def dictionary(self) -> dict:
+    #     return self.__dict
 
-    @dictionary.setter
-    def dictionary(self,dictionary:dict):
-        if not isinstance(dictionary,dict):
-            raise TypeError("Square must recieve a dictionary")
-        else:
-            self.__dict = dictionary
+    # @dictionary.setter
+    # def dictionary(self,dictionary:dict):
+    #     if not isinstance(dictionary,dict):
+    #         raise TypeError("Square must recieve a dictionary")
+    #     else:
+    #         self.__dict = dictionary
 
     def __str__(self) -> str:
         '''We invoke this method in order to make sure we are working with the right square, although it's not essential here.

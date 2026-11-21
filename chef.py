@@ -12,7 +12,7 @@ class Chef:
 
         self.x = x
         self.y = y
-        self.dict = dictionary
+        self.__dict = dictionary
         # The initial sprite will be always the same, so no parameter is needed
         # In Pyxel the image is a tuple with the coordinates of the image in
         # the image bank.
@@ -47,9 +47,9 @@ class Chef:
     def y(self) -> int:
         return self.__y
 
-    @property
-    def dictionary(self) -> int:
-        return self.__dict
+    # @property
+    # def dictionary(self) -> int:
+    #     return self.__dict
 
     # @property
     # def image(self) -> tuple:
@@ -77,12 +77,12 @@ class Chef:
         else:
             self.__y = y
 
-    @dictionary.setter
-    def dictionary(self,dictionary:dict):
-        if not isinstance(dictionary,dict):
-            raise TypeError("Chef must recieve a dictionary")
-        else:
-            self.__dict = dictionary
+    # @dictionary.setter
+    # def dictionary(self,dictionary:dict):
+    #     if not isinstance(dictionary,dict):
+    #         raise TypeError("Chef must recieve a dictionary")
+    #     else:
+    #         self.__dict = dictionary
 
     # @image.setter
     # def image(self, image: tuple):
