@@ -29,15 +29,15 @@ class Dish:
         '''This returns the corresponding dish's images depending on whether it is
         dirty or not'''
         if self.dirty:
-            result = self.__dict["dirty_dish_image"]
+            result = tuple(self.__dict["dirty_dish_image"])
         else:
-            result = self.__dict["clean_dish_image"]
+            result = tuple(self.__dict["clean_dish_image"])
         return result
 
     @property
     def ingredients(self) -> list:
         '''This returns what the dish contains'''
-        return self.__ingredients 
+        return list(self.__ingredients) 
 
     @property
     def dirty(self)-> bool:
@@ -92,5 +92,5 @@ class Dish:
             self.ingredients.append(ingredient)
 
     def empty(self):
-        '''This method turns a full dish into an empty one (empties the containing list)'''
+        '''This method turns a full dish into an empty one (empties the ingredients list)'''
         self.ingredients = []
