@@ -1,3 +1,5 @@
+from ingredients import Ingredient
+
 # Creating the dish class
 class Dish:
     '''This is the class which contains the dishes'''
@@ -9,7 +11,7 @@ class Dish:
         self.__dict = dictionary
         self.x = x
         self.y = y
-        self.containing = False
+        self.ingredients = []
         self.dirty = False
 
     @property
@@ -27,15 +29,15 @@ class Dish:
         '''This returns the corresponding dish's images depending on whether it is
         dirty or not'''
         if self.dirty:
-            result = (0,48,112,16,16)
+            result = self.__dict["dirty_dish_image"]
         else:
-            result = (0,32,80,16,16)
+            result = self.__dict["clean_dish_image"]
         return result
 
     @property
-    def containing(self) -> bool:
-        '''This returns whether the dish already contains something or not'''
-        return self.__containing 
+    def ingredients(self) -> list:
+        '''This returns what the dish contains'''
+        return self.__ingredients 
 
     @property
     def dirty(self)-> bool:
@@ -47,7 +49,7 @@ class Dish:
         '''We use this setter to control the values of x'''
         if not isinstance(value,int):
             raise TypeError("The x coord must be an int.")
-        elif value<0 or (value+16)>self.__dict["board_width"]:
+        elif value<0 or (value+self.__dict['width'])>self.__dict["board_width"]:
             raise ValueError("The x coordinate must be within the board limits.")
         else:
             self.__x = value
@@ -63,13 +65,15 @@ class Dish:
         else:
             self.__y = value
 
-    @containing.setter
-    def containing(self, value:bool):
-        '''This setter is used to control the values of 'containing'.'''
-        if not isinstance(value, bool):
-            raise TypeError("Containing must be a boolean")
-        else:
-            self.__containing = value
+    @ingredients.setter
+    def ingredients(self, value:list):
+        '''This setter is used to control the values of 'ingredients'.'''
+        if not isinstance(value, list):
+            raise TypeError("Ingredients must be a list")
+        for element in value:
+            if not isinstance(element, Ingredient):
+                raise TypeError("The elements of ingredients must be Ingredient.")
+        self.__ingredients = value
 
     @dirty.setter
     def dirty(self, value:bool):
@@ -79,15 +83,14 @@ class Dish:
         else:
             self.__dirty = value
 
-    def fill(self):
-        '''This method fills the plate with the corresponding ingredient if
-        the dish is not already full of something. If we try to do anything else, 
-        this method won't do anything'''
-        if not self.containing:
-            self.containing = True
+    def fill(self, ingredient: Ingredient):
+        '''This method fills the plate with the corresponding ingredient
+        :param ingredient: the ingredient which is added to the dish'''
+        if not isinstance(ingredient, Ingredient):
+            raise TypeError("What we add to the dish must be an Ingredient")
+        else:
+            self.ingredients.append(ingredient)
 
     def empty(self):
-        '''This method turns a full dish into an empty one, but only if the dish
-        was already containing something. Else, this method won't do anything'''
-        if self.containing:
-            self.containing = False
+        '''This method turns a full dish into an empty one (empties the containing list)'''
+        self.ingredients = []
