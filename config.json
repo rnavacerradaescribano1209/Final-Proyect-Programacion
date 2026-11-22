@@ -7,6 +7,7 @@
     "clean_dish_image": [0,32,80,16,16],
     "dirty_dish_image": [0,48,112,16,16],
     "transparent_color": 0,
+    "max_dishes": 5,
     "ingredients":
     {"ingredients_list":{
         "potato":[0,16,48,16,16],
