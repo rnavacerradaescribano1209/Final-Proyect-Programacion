@@ -29,7 +29,7 @@ class IngredientDispenser(Station):
         else:
             self.__content = value
 
-    def extract(self) -> Ingredient:
-        '''This is the method which will be invoked when we act on the ingredient dispensers.
+    def chef_acts(self) -> Ingredient:
+        '''This is the method which was inherited which will be invoked when we act on the ingredient dispensers.
         :return: the corresponding ingrdient'''
         return Ingredient(self.content, self.dictionary)

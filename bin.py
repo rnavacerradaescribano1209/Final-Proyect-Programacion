@@ -10,9 +10,10 @@ class Bin(Station):
         :param dictionary: used to access the json constants'''
         super().__init__(x,y,dictionary)
 
-    def empty_dish(self, dish: Dish):
-        '''This method is used to empty the dish when the chef acts on the bin
-        :param dish: the dish the chef holds'''
+    def chef_acts(self, dish: Dish):
+        '''This inherited method is used to empty the dish when the chef acts on the bin
+        :param dish: the dish the chef holds
+        :return: an empty dish'''
         if isinstance(dish, Dish):
             dish.empty()
         else:

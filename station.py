@@ -53,3 +53,8 @@ class Station:
             raise ValueError("The y coordinate must be within the board limits.")
         else:
             self.__y = value
+
+    def chef_acts(self):
+        '''This method will be invoked when a chef acts on a station. If it is not implemented in said class, 
+        an error will be raised.'''
+        raise ValueError('This method must be implemented in the class')
