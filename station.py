@@ -1,15 +1,14 @@
 # We need to divide the worktops based on their functionality.
 # First, let's code those who dispense things, such as the ingredient boxes, or those that contain dishes.
 
-class Dispenser:
+class Station:
 
-    '''This is the class that corresponds to the mother class of the
-    ingredient boxes and dish pile.'''
+    '''This is the class that corresponds to the mother class of the stations of the game.'''
 
     def __init__(self, x:int, y:int, dictionary:dict):
-        '''This is the init method of the Dispenser class. 
-        :param x: the x coord of the dispenser
-        :param y: the y coord of the dispenser
+        '''This is the init method of the Station class. 
+        :param x: the x coord of the station
+        :param y: the y coord of the station
         :param dictionary: used to access the json constants. It must be read only in order to be able to
         use it in the subclasses'''
         if not isinstance(dictionary, dict):
@@ -21,12 +20,12 @@ class Dispenser:
 
     @property
     def x(self) -> int:
-        '''This returns the x coordinate of the dispenser'''
+        '''This returns the x coordinate of the station'''
         return self.__x
 
     @property
     def y(self) -> int:
-        '''This returns the y coordinate of the dispenser'''
+        '''This returns the y coordinate of the station'''
         return self.__y
 
     @property

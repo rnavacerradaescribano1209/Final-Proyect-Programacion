@@ -1,7 +1,7 @@
-from dispenser import Dispenser
+from station import Station
 from dish import Dish
 
-class DishDispenser(Dispenser):
+class DishDispenser(Station):
     '''This is the subclass which stores the dish dispenser. It is a subclass of the mother class
     Dispenser.'''
 
