@@ -1,5 +1,6 @@
 # We need to divide the worktops based on their functionality.
 # First, let's code those who dispense things, such as the ingredient boxes, or those that contain dishes.
+from dish import Dish
 
 class Station:
 
@@ -54,7 +55,9 @@ class Station:
         else:
             self.__y = value
 
-    def chef_acts(self):
+    def chef_acts(self, dish: (Dish|None)) -> (Dish | None):
         '''This method will be invoked when a chef acts on a station. If it is not implemented in said class, 
-        an error will be raised.'''
+        an error will be raised.
+        :param dish: the dish the chef carries, or nothing if he's empty-handed
+        :return: the dish the chef will carry after acting, or nothing'''
         raise ValueError('This method must be implemented in the class')

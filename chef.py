@@ -118,7 +118,7 @@ class Chef:
             raise ValueError("The board_x_size must be a positive integer")
         elif board_y_size < 1:
             raise ValueError("The board_y_size must be a positive integer")
-        elif direction.lower() not in self.dict["directions"]:
+        elif direction.lower() not in self.__dict["directions"]:
             raise ValueError("The direction must be 'left' or 'right'")
         # We convert the direction to lower case to avoid problems with upper
         # case letters
@@ -157,13 +157,12 @@ class Chef:
                 self.y += 1
                 self.image = (0,48,16,16,16)
         
-        def act(self):
-            '''This method changes the state of the acting attribute'''
-            self.acting = not self.acting
+    def act(self):
+        '''This method changes the state of the acting attribute'''
+        self.acting = not self.acting
 
-        # def __str__(self)-> str:
-        #     if self.has_dish:
-        #         holding = 'holding'
-        #     else:
-        #         holding = 'not holding'
-            
+    # def __str__(self)-> str:
+    #     if self.has_dish:
+    #         holding = 'holding'
+    #     else:
+    #         holding = 'not holding'

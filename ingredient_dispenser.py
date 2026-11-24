@@ -1,4 +1,5 @@
 from station import Station
+from dish import Dish
 from ingredients import Ingredient
 
 class IngredientDispenser(Station):
@@ -29,7 +30,12 @@ class IngredientDispenser(Station):
         else:
             self.__content = value
 
-    def chef_acts(self) -> Ingredient:
+    def chef_acts(self, dish: Dish|None) -> (Dish|None):
         '''This is the method which was inherited which will be invoked when we act on the ingredient dispensers.
-        :return: the corresponding ingrdient'''
-        return Ingredient(self.content, self.dictionary)
+        :param dish: the dish the chef is holding, or None if the chef is empty-handed
+        :return: the corresponding ingredient in the dish if the chef presents a dish. Otherwise, it does nothing'''
+        if not isinstance(dish, Dish|None):
+            raise TypeError("The recipient for an ingredient must be a Dish")
+        elif isinstance(dish, Dish):
+            dish.fill(Ingredient(self.content, self.dictionary))
+        return dish

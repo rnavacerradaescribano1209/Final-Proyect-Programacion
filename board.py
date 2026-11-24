@@ -136,7 +136,7 @@ class Board:
 
         # This is how much vertical space the service board takes up
 
-        pyxel.blt(0,0,*(1,0,0,192,176))
+        # pyxel.blt(0,0,*(1,0,0,192,176))
 
         # We draw all the squares with a double loop.
         for r in range(len(self.__squares)):

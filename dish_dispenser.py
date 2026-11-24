@@ -14,10 +14,11 @@ class DishDispenser(Station):
         # This is a control variable to know how many dishes were dispensed
         self.__dispensed = 0
 
-    def chef_acts(self) -> (Dish | None):
+    def chef_acts(self, dish: (Dish|None)) -> (Dish | None):
         '''This is the inherited method which will be invoked when we act on the dish dispenser.
-        :return: either a Dish object or nothing, if we have already extracted 5 dishes.'''
-        if self.__dispensed < self.dictionary["max_dishes"]:
+        :return: either a Dish object or nothing. If we have already extracted 5 dishes, it will return nothing.
+        Otherwise, if the chef is empty handed, it will return a dish. If the chef has a dish it won't do anything'''
+        if self.__dispensed < self.dictionary["max_dishes"] and dish is None:
             self.__dispensed += 1
             return Dish(self.x, self.y, self.dictionary)
-        return None
+        return dish

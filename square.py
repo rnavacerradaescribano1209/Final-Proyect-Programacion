@@ -14,8 +14,8 @@ class Square:
 
         if not isinstance(value, str):
             raise TypeError("The value of square must be a string.")
-        elif value.lower() not in self.dict["images"]:
-            raise ValueError("The value must be " + str(tuple(self.dict["images"])))
+        elif value.lower() not in self.__dict["images"]:
+            raise ValueError("The value must be " + str(tuple(self.__dict["images"])))
         else:
             self.__value = value.lower()
 
@@ -66,7 +66,5 @@ class Square:
         :param x: the x coord where the square is drawn
         :param y: the y coord where the square is drawn'''
         # Unpacking the tuple
-        bank, u, v, width, height = self.dict["images"][self.value]
+        bank, u, v, width, height = self.__dict["images"][self.value]
         pyxel.blt(x, y, bank, u, v, width, height)
-
-    

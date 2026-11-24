@@ -11,7 +11,7 @@ class Dish:
         self.__dict = dictionary
         self.x = x
         self.y = y
-        self.ingredients = []
+        self.__ingredients = []
         self.dirty = False
 
     @property
@@ -89,8 +89,8 @@ class Dish:
         if not isinstance(ingredient, Ingredient):
             raise TypeError("What we add to the dish must be an Ingredient")
         else:
-            self.ingredients.append(ingredient)
+            self.__ingredients.append(ingredient)
 
     def empty(self):
         '''This method turns a full dish into an empty one (empties the ingredients list)'''
-        self.ingredients = []
+        self.__ingredients = []
