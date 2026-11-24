@@ -3,7 +3,7 @@ from dish import Dish
 
 class DishDispenser(Station):
     '''This is the subclass which stores the dish dispenser. It is a subclass of the mother class
-    Dispenser.'''
+    Station.'''
 
     def __init__(self, x:int, y:int,dictionary: dict):
         '''This is the init method of the dish dispenser subclass.

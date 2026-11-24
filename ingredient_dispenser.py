@@ -3,7 +3,7 @@ from ingredients import Ingredient
 
 class IngredientDispenser(Station):
     '''This is the subclass which stores the ingredient dispensers. It is a subclass of the mother class
-    Dispenser.'''
+    Station.'''
 
     def __init__(self, x:int, y:int,dictionary: dict, content:str):
         '''This is the init method of the ingredient dispensers subclass.
