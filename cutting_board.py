@@ -14,20 +14,6 @@ class CuttingBoard(Station):
         super().__init__(x,y, dictionary)
         self.__board_ingredients = []
 
-    # def chef_acts(self, dish: Dish|None) -> (Dish | None):
-    #     '''This is the inherited method which will be invoked when we act on the cutting board.
-    #     If the ingredient cannot be chopped or is already chopped, it won't do anything.
-    #     :return: a chopped ingredient'''
-    #     if not isinstance(dish, Dish|None):
-    #         raise TypeError("The chopped object must be in a dish")
-    #     elif dish.ingredient.can_be_chopped() == False:
-    #         raise ValueError("This ingredient cannot be chopped")
-    #     elif dish.ingredient.chopped:
-    #         raise ValueError("This ingredient is already chopped")
-    #     else:
-    #         dish.ingredient.chopped = True
-    #     return dish.ingredient
-
     def chef_acts(self, dish: Dish|None) -> (Dish | None):
         '''This is the inherited method which will be invoked when we act on the cutting board.
         If the ingredient cannot be chopped or is already chopped, it won't do anything.
