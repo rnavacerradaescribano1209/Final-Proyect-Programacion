@@ -100,7 +100,7 @@ class Chef:
         else:
             self.__has_dish = dish
 
-    def move(self, direction: str, board_x_size: int, board_y_size:int):
+    def move(self, direction: str): #, board_x_size: int, board_y_size:int):
         """
         This is an example of how to move the chef horizontally. No obstacles
         in the board are considered.
@@ -112,12 +112,12 @@ class Chef:
         # Checking the type and value of the parameters
         if not isinstance(direction, str):
             raise TypeError("The direction must be a string")
-        elif not isinstance(board_x_size, int):
-            raise TypeError("The board_x_size must be an integer")
-        elif board_x_size < 1:
-            raise ValueError("The board_x_size must be a positive integer")
-        elif board_y_size < 1:
-            raise ValueError("The board_y_size must be a positive integer")
+        # elif not isinstance(board_x_size, int):
+        #     raise TypeError("The board_x_size must be an integer")
+        # elif board_x_size < 1:
+        #     raise ValueError("The board_x_size must be a positive integer")
+        # elif board_y_size < 1:
+        #     raise ValueError("The board_y_size must be a positive integer")
         elif direction.lower() not in self.__dict["directions"]:
             raise ValueError("The direction must be 'left' or 'right'")
         # We convert the direction to lower case to avoid problems with upper
@@ -127,35 +127,19 @@ class Chef:
         # sprite. We can move the chef to the right if the rightmost
         # x-coordinate of the chef is less than the board size. It will be
         # the x-coordinate of the chef plus the width of the sprite. The
-        if self.__position == "upper":
-            if direction == "right" and self.x + self.image[3] < board_x_size:
-                self.x += 1
-                self.image = (0,0,0,16,16)
-            # We can move the chef to the left if its x-coordinate is > 0
-            elif direction == "left" and self.x > 0:
-                self.x -= 1
-                self.image = (0,16,0,16,16)
-            elif direction == "up" and self.y > 48:
-                self.y -= 1
-                self.image = (0,32,0,16,16)
-            elif direction == "down" and self.y + self.image[4] < board_y_size//2 + 8:
-                self.y += 1
-                self.image = (0,48,0,16,16)
-
-        if self.__position == "lower":
-            if direction == "right" and self.x + self.image[3] < board_x_size:
-                self.x += 1
-                self.image = (0,0,16,16,16)
-            # We can move the chef to the left if its x-coordinate is > 0
-            elif direction == "left" and self.x > 0:
-                self.x -= 1
-                self.image = (0,16,16,16,16)
-            elif direction == "up" and self.y > board_y_size//2 + 24:
-                self.y -= 1
-                self.image = (0,32,16,16,16)
-            elif direction == "down" and self.y + self.image[4] < board_y_size - 16:
-                self.y += 1
-                self.image = (0,48,16,16,16)
+        if direction == "right" and self.x + self.image[3] < self.__dict.get("board_width"):
+            self.x += 1
+            self.image = self.__dict[self.__position][0]
+        # We can move the chef to the left if its x-coordinate is > 0
+        elif direction == "left" and self.x > 0:
+            self.x -= 1
+            self.image = self.__dict[self.__position][1]
+        elif direction == "up" and self.y > self.__dict.get("service_board_height"):
+            self.y -= 1
+            self.image = self.__dict[self.__position][2]
+        elif direction == "down" and self.y + self.image[4] < self.__dict.get("board_height"):
+            self.y += 1
+            self.image = self.__dict[self.__position][3]
         
     def act(self):
         '''This method changes the state of the acting attribute'''

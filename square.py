@@ -5,10 +5,14 @@ import json
 class Square:
     '''This class contains the squares of the board.'''
 
-    def __init__(self, value: str,dictionary:dict):
+    def __init__(self, value: str, x:int, y:int, dictionary:dict):
         ''' The init method of the class.
         :param value: the squares can either be part of the service board, floor, worktop, hand-over worktops,
-        wall, ingredients boxes, blender, server, bin, cutting board, pan, plates, or return platform'''
+        wall, ingredients boxes, blender, server, bin, cutting board, pan, plates, or return platform
+        :param x: the x position of the upper left corner of the square
+        :param y: the y position of the upper left corner of the square
+        :param dictionary: the dictionary that contains the constants
+        '''
         
         self.__dict = dictionary
 
@@ -21,11 +25,36 @@ class Square:
 
         self.is_active = False
 
+        self.x = x
+        self.y = y
+
     @property
     def value(self) -> str:
         '''This method will return the value of value.
         :return: the type of square'''
         return self.__value
+
+    @property
+    def x(self) -> int: return self.__x
+    @property
+    def y(self) -> int: return self.__y
+
+    @x.setter
+    def x(self, x:int):
+        if not isinstance(x,int):
+            raise TypeError("The x value must be an integer")
+        elif x>self.__dict.get("board_width") or x<0:
+            raise ValueError("The square must be fully inside the board")
+        else:
+            self.__x = x
+    @y.setter
+    def y(self, y:int):
+        if not isinstance(y,int):
+            raise TypeError("The y value must be an integer")
+        elif y>self.__dict.get("board_height") or y<self.__dict.get("service_board_height"):
+            raise ValueError("The square must be fully inside the board")
+        else:
+            self.__y = y
 
     # @property
     # def dictionary(self) -> dict:
@@ -60,11 +89,11 @@ class Square:
         else:
             return NotImplemented
 
-    def draw(self, x:int, y:int):
+    def draw(self):
         '''This is the pyxel method that draws the square.
-        In this case, we are drawing the squares.
-        :param x: the x coord where the square is drawn
-        :param y: the y coord where the square is drawn'''
+        In this case, we are drawing the squares.'''
         # Unpacking the tuple
+        # bank, u, v, width, height = self.__dict["images"][self.value]
+        # pyxel.blt(x, y, bank, u, v, width, height)
         bank, u, v, width, height = self.__dict["images"][self.value]
-        pyxel.blt(x, y, bank, u, v, width, height)
+        pyxel.blt(self.x, self.y, bank, u, v, width, height)
