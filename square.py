@@ -1,5 +1,5 @@
 import pyxel
-import json
+# import json
 
 # Creating a class called Square, which will represent a square of the board. 
 class Square:

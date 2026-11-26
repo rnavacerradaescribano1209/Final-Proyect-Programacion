@@ -13,11 +13,24 @@ class Ingredient:
         self.name = name
         # A new ingredient is always whole
         self.chopped = False
+        self.triturated = False
+        # A new ingredient is always raw
+        self.raw = True
 
     @property
     def chopped(self) -> bool:
         '''This tells us whether the ingredient is chopped or not'''
         return self.__chopped
+
+    @property
+    def triturated(self) -> bool:
+        '''This tells us whether the ingredient is triturated or not'''
+        return self.__triturated
+
+    @property
+    def raw(self) -> bool:
+        '''This tells us whether the ingredient is raw or not'''
+        return self.__raw
     
     @property
     def name(self) -> str:
@@ -53,6 +66,24 @@ class Ingredient:
         else:
             self.__chopped = value
 
+    @triturated.setter
+    def triturated(self, value:bool):
+        '''This makes sure triturated is a boolean'''
+        if not isinstance(value,bool):
+            raise TypeError("Triturated must be a bool")
+        # In this case we do not need the elif: can be triturated since all ingredients can be triturated
+        else:
+            self.__triturated = value
+
+    @raw.setter
+    def raw(self, value:bool):
+        '''This makes sure raw is a boolean'''
+        if not isinstance(value,bool):
+            raise TypeError("raw must be a bool")
+        # Same, we don't need the elif since all of them are raw.
+        else:
+            self.__raw = value
+
     # We need the ingredients to be drawn
     def draw(self, x:int, y:int):
         '''This method draws the corresponding ingredient
@@ -62,7 +93,7 @@ class Ingredient:
         bank, u, v, width, height = self.image
         pyxel.blt(x,y,bank,u,v,width,height,self.__dict["transparent_color"]) 
 
-    # Adding an auxiliary method to check whether an ingredient can be chopped
+    # Adding an auxiliary method to check whether an ingredient can be chopped (eggs can't)
     def can_be_chopped(self)-> bool:
         '''This auxiliary method will return true or false depending on whether the ingredient can be chopped'''
         return self.name in self.__chopped_ing
