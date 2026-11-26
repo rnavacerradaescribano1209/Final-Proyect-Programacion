@@ -23,13 +23,14 @@ class CuttingBoard(Station):
         if the chef acts empty-handed nothing happens'''
         if not isinstance(dish, Dish|None):
             raise TypeError("The chopped object must be in a dish")
-        elif isinstance(dish, Dish) and len(self.__board_ingredients) == 0 and len(dish.ingredients) > 0:
+        elif isinstance(dish, Dish) and dish.ingredients.raw and len(self.__board_ingredients) == 0 and len(dish.ingredients) > 0:
             for ingredient in dish.ingredients:
                 self.__board_ingredients.append(ingredient)
 
             for element in self.__board_ingredients:
                 if element.can_be_chopped() and not element.chopped:
                     element.chopped = True
+                    element.raw = False
 
             dish.empty()
 
