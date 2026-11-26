@@ -1,33 +1,91 @@
 {
-    "board_width" : 192,
-    "board_height" : 176,
-    "service_board_height": 32,
-    "width":16,
-    "height":16,
+
     "clean_dish_image": [0,32,80,16,16],
     "dirty_dish_image": [0,48,112,16,16],
     "transparent_color": 0,
     "max_dishes": 5,
-    "ingredients":
-    {"ingredients_list":{
-        "potato":[0,16,48,16,16],
-        "tomato":[0,0,48,16,16],
-        "onion":[0,32,48,16,16],
-        "chorizo":[0,48,48,16,16],
-        "egg":[0,0,64,16,16]
+    "ingredients":{
+        "ingredients_list":{
+            "potato":[0,16,48,16,16],
+            "tomato":[0,0,48,16,16],
+            "onion":[0,32,48,16,16],
+            "chorizo":[0,48,48,16,16],
+            "egg":[0,0,64,16,16]
+        },
+        "chopped_ingredient_list": {
+            "potato":[0,48,64,16,16],
+            "tomato":[0,32,64,16,16],
+            "onion":[0,0,80,16,16],
+            "chorizo":[0,16,80,16,16]
+        }
     },
-    "chopped_ingredient_list": {
-        "potato":[0,48,64,16,16],
-        "tomato":[0,32,64,16,16],
-        "onion":[0,0,80,16,16],
-        "chorizo":[0,16,80,16,16]
-    }},
+
     "conts":["chorizo","egg","onion","tomato","potato"],
-    "squares":{"images" : {"service_board": [1, 0, 0, 192, 32], "floor": [0, 0, 32, 16, 16], "worktop": [0, 16, 32, 16, 16], 
-        "hand_over_wt": [0, 48, 32, 16, 16], "wall": [0, 32, 32, 16, 16], "tomato_box": [0, 0, 48, 16, 16],
-        "chorizo_box": [0, 48, 48, 16, 16], "egg_box": [0, 0, 64, 16, 16], "onion_box": [0, 32, 48, 16, 16], 
-        "potato_box": [0, 16, 48, 16, 16],"blender": [0, 32, 176, 16, 16], "server": [0, 32, 160, 16, 16], 
-        "bin": [0, 48, 160, 16, 16], "cutting_board": [0, 16, 176, 16, 16], "pan": [0, 48, 176, 16, 16],
-        "plates": [0, 0, 176, 16, 16], "return_platform": [0, 48, 112, 16, 16], "sink": [0,16,64,16,16] }},
-    "chef" :{"directions": ["left","right","up","down"]}
+
+    "squares":{
+        "images" : {
+            "service_board": [1, 0, 0, 192, 32], "floor": [0, 0, 32, 16, 16], "worktop": [0, 16, 32, 16, 16], 
+            "hand_over_wt": [0, 48, 32, 16, 16], "wall": [0, 32, 32, 16, 16], "tomato_box": [0, 0, 48, 16, 16],
+            "chorizo_box": [0, 48, 48, 16, 16], "egg_box": [0, 0, 64, 16, 16], "onion_box": [0, 32, 48, 16, 16], 
+            "potato_box": [0, 16, 48, 16, 16],"blender": [0, 32, 176, 16, 16], "server": [0, 32, 160, 16, 16], 
+            "bin": [0, 48, 160, 16, 16], "cutting_board": [0, 16, 176, 16, 16], "pan": [0, 48, 176, 16, 16],
+            "plates": [0, 0, 176, 16, 16], "return_platform": [0, 48, 112, 16, 16], "sink": [0,16,64,16,16]
+        },
+        "board_width" : 192,
+        "board_height" : 176,
+        "service_board_height": 32,
+        "width":16,
+        "height":16
+    },
+
+    "chef" :{
+        "directions": ["left","right","up","down"],
+        "board_width" : 192,
+        "board_height" : 176,
+        "service_board_height": 32,
+        "lower":[[0,0,16,16,16],[0,16,16,16,16],[0,32,16,16,16],[0,48,16,16,16]],
+        "upper":[[0,0,0,16,16],[0,16,0,16,16],[0,32,0,16,16],[0,48,0,16,16]]
+    },
+    
+    "layout":[
+        ["onion_box",0,32],
+        ["egg_box",16,32],
+        ["chorizo_box",32,32],
+        ["tomato_box",0,160],
+        ["potato_box",16,160],
+        ["pan",112,160],
+        ["return_platform",128,160],
+        ["plates",144,160],
+        ["blender",96,32],
+        ["server",176,32],
+        ["bin",80,96],
+        ["sink",144,96],
+        ["cutting_board",64,32],["cutting_board",80,160],
+        ["wall",0,96],["wall",32,96],["wall",64,96],["wall",96,96],["wall",128,96],["wall",176,96],
+        ["worktop",48,32],["worktop",80,32],["worktop",112,32],["worktop",128,32],["worktop",144,32],["worktop",160,32],
+        ["worktop",16,96],["worktop",48,96],["worktop",112,96],["worktop",160,96],
+        ["worktop",32,160],["worktop",48,160],["worktop",64,160],["worktop",96,160],["worktop",160,160],["worktop",176,160]
+    ]
+    ,
+    "board": {
+        "_comment":"Layout contains a list of lists, each with the value, the x position and the y position of each square of the board",
+        "layout":[
+            ["onion_box",0,32],
+            ["egg_box",16,32],
+            ["chorizo_box",32,32],
+            ["tomato_box",0,160],
+            ["potato_box",16,160],
+            ["pan",112,160],
+            ["return_platform",128,160],
+            ["plates",144,160],
+            ["blender",80,32],
+            ["server",176,32],
+            ["bin",80,112],
+            ["sink",148,112],
+            ["wall",0,112],["wall",32,112],["wall",64,112],["wall",96,112],["wall",128,112],["wall",160,112],
+            ["worktop",48,32],["worktop",80,32],["worktop",112,32],["worktop",128,32],["worktop",144,32],["worktop",160,32],
+            ["worktop",16,64],["worktop",48,64],["worktop",112,64],["worktop",160,64],
+            ["worktop",32,160],["worktop",48,160],["worktop",64,160],["worktop",96,160],["worktop",160,160],["worktop",176,160]
+        ]
+    }
 }

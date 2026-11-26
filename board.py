@@ -12,20 +12,21 @@ class Board:
     """This class contains a simple board"""
     
     # Adding a list which represents the layout of the board.
-    LAYOUT = [
-        ['onion_box', 'egg_box', 'chorizo_box', 'worktop', 'cutting_board', 
-            'worktop', 'blender', 'worktop','worktop','worktop','worktop', 'server'],
-        ['floor'] * 12,
-        ['floor'] * 12,
-        ['floor'] * 12,
-        ['wall','hand_over_wt', 'wall','hand_over_wt','wall','bin','wall','hand_over_wt',
-            'wall','sink','hand_over_wt', 'wall'],
-        ['floor'] * 12,
-        ['floor'] * 12,
-        ['floor'] * 12,
-        ['tomato_box','potato_box', 'worktop','worktop','worktop','cutting_board',
-            'worktop','pan','return_platform','plates','worktop','worktop']
-                ]
+        # You are not adding it any more
+    # LAYOUT = [
+    #     ['onion_box', 'egg_box', 'chorizo_box', 'worktop', 'cutting_board', 
+    #         'worktop', 'blender', 'worktop','worktop','worktop','worktop', 'server'],
+    #     ['floor'] * 12,
+    #     ['floor'] * 12,
+    #     ['floor'] * 12,
+    #     ['wall','hand_over_wt', 'wall','hand_over_wt','wall','bin','wall','hand_over_wt',
+    #         'wall','sink','hand_over_wt', 'wall'],
+    #     ['floor'] * 12,
+    #     ['floor'] * 12,
+    #     ['floor'] * 12,
+    #     ['tomato_box','potato_box', 'worktop','worktop','worktop','cutting_board',
+    #         'worktop','pan','return_platform','plates','worktop','worktop']
+    #             ]
 
     def __init__(self, width: int, height: int, file_name:str ):
         """ Method that creates the board.
@@ -39,17 +40,17 @@ class Board:
         # Setting the attributes
         self.width = width
         self.height = height
-        self.__service_board = Square('service_board',self.data.get("squares"))
+        # self.__service_board = Square('service_board',self.data.get("squares"))
 
         # Building a Square object for every name in the layout.
         # Creating an empty list to store them.
-        self.__squares = []
-        # Creating a loop to do it:
-        for line in self.LAYOUT:
-            row = []
-            for element in line:
-                row.append(Square(element,self.data.get("squares")))
-            self.__squares.append(row)
+        # self.__squares = []
+        # # Creating a loop to do it:
+        # for line in self.LAYOUT:
+        #     row = []
+        #     for element in line:
+        #         row.append(Square(element,self.data.get("squares")))
+        #     self.__squares.append(row)
 
 
         # The board will contain a Chef in the middle of it, so one of
@@ -106,22 +107,22 @@ class Board:
             pyxel.quit()
         # To move the chef
         if pyxel.btn(pyxel.KEY_LEFT):
-            self.chef_lower.move("left", self.width, self.height)
+            self.chef_lower.move("left")#, self.width, self.height)
         if pyxel.btn(pyxel.KEY_RIGHT):
-            self.chef_lower.move("right", self.width, self.height)
+            self.chef_lower.move("right")#, self.width, self.height)
         if pyxel.btn(pyxel.KEY_UP):
-            self.chef_lower.move("up", self.width, self.height)
+            self.chef_lower.move("up")#, self.width, self.height)
         if pyxel.btn(pyxel.KEY_DOWN):
-            self.chef_lower.move("down", self.width, self.height)
+            self.chef_lower.move("down")#, self.width, self.height)
 
         if pyxel.btn(pyxel.KEY_A):
-            self.chef_upper.move("left", self.width, self.height)
+            self.chef_upper.move("left")#, self.width, self.height)
         if pyxel.btn(pyxel.KEY_D):
-            self.chef_upper.move("right", self.width, self.height)
+            self.chef_upper.move("right")#, self.width, self.height)
         if pyxel.btn(pyxel.KEY_W):
-            self.chef_upper.move("up", self.width, self.height)
+            self.chef_upper.move("up")#, self.width, self.height)
         if pyxel.btn(pyxel.KEY_S):
-            self.chef_upper.move("down", self.width, self.height)
+            self.chef_upper.move("down")#, self.width, self.height)
 
     def draw(self):
         """This is the pyxel method that gets executed in every iteration of
@@ -132,16 +133,20 @@ class Board:
         pyxel.cls(0)
 
         # Drawing the service board:
-        self.__service_board.draw(0,0)
+        # self.__service_board.draw(0,0)
 
         # This is how much vertical space the service board takes up
 
-        # pyxel.blt(0,0,*(1,0,0,192,176))
+        pyxel.blt(0,0,*(1,0,0,192,176))
 
         # We draw all the squares with a double loop.
-        for r in range(len(self.__squares)):
-            for s in range(len(self.__squares[r])):
-                self.__squares[r][s].draw(s * self.data.get("width"), self.data.get("service_board_height") + r*self.data.get("height"))
+        # for r in range(len(self.__squares)):
+        #     for s in range(len(self.__squares[r])):
+        #         self.__squares[r][s].draw(s * self.data.get("width"), self.data.get("service_board_height") + r*self.data.get("height"))
+
+        for i in self.data.get("layout"):
+            square = Square(*i,self.data.get("squares"))
+            square.draw()
 
         # Drawing the chef. Parameters of pyxel.blt are (x, y, sprite_tuple)
         # The * is used to unpack the sprite tuple
